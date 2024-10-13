@@ -31,6 +31,102 @@ public class TaskSolver {
         return lastDigitA + lastDigitB;
     }
 
+    // Метод для безопасного деления
+    public double safeDiv(int x, int y) {
+        if (y == 0) {
+            return 0;
+        }
+        return (double) x / y;
+    }
+
+    // Метод для строки сравнения
+    public String makeDecision(int x, int y) {
+        if (x > y) {
+            return x + " > " + y;
+        } else if (x < y) {
+            return x + " < " + y;
+        } else {
+            return x + " = " + y;
+        }
+    }
+
+    // Метод для тройной суммы
+    public boolean sum3(int x, int y, int z) {
+        return x + y == z || x + z == y || y + z == x;
+    }
+
+    // Метод для возраста
+    public String age(int x) {
+        int lastDigit = x % 10;
+        if (lastDigit == 1 && x != 11) {
+            return x + " год";
+        } else if ((lastDigit == 2 || lastDigit == 3 || lastDigit == 4) && (x < 10 || x > 20)) {
+            return x + " года";
+        } else {
+            return x + " лет";
+        }
+    }
+
+    // Метод для вывода дней недели
+    public void printDays(String x) {
+        switch (x.toLowerCase()) {
+            case "понедельник":
+                System.out.println("Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье");
+                break;
+            case "вторник":
+                System.out.println("Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье");
+                break;
+            case "среда":
+                System.out.println("Среда, Четверг, Пятница, Суббота, Воскресенье");
+                break;
+            case "четверг":
+                System.out.println("Четверг, Пятница, Суббота, Воскресенье");
+                break;
+            case "пятница":
+                System.out.println("Пятница, Суббота, Воскресенье");
+                break;
+            case "суббота":
+                System.out.println("Суббота, Воскресенье");
+                break;
+            case "воскресенье":
+                System.out.println("Воскресенье");
+                break;
+            default:
+                System.out.println("это не день недели");
+                break;
+        }
+    }
+
+    // Метод для последовательного сложения пяти чисел
+    public void sequentialSum() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите первое число для последовательного сложения: ");
+        int input6a = scanner.nextInt();
+        System.out.print("Введите второе число для последовательного сложения: ");
+        int input6b = scanner.nextInt();
+        System.out.print("Введите третье число для последовательного сложения: ");
+        int input6c = scanner.nextInt();
+        System.out.print("Введите четвертое число для последовательного сложения: ");
+        int input6d = scanner.nextInt();
+        System.out.print("Введите пятое число для последовательного сложения: ");
+        int input6e = scanner.nextInt();
+
+        int sum = lastNumSum(input6a, input6b);
+        System.out.println(input6a + " + " + input6b + " = " + sum);
+
+        sum = lastNumSum(sum, input6c);
+        System.out.println(sum + " + " + input6c + " = " + sum);
+
+        sum = lastNumSum(sum, input6d);
+        System.out.println(sum + " + " + input6d + " = " + sum);
+
+        sum = lastNumSum(sum, input6e);
+        System.out.println(sum + " + " + input6e + " = " + sum);
+
+        System.out.println("Итого: " + sum);
+    }
+
     public static void main(String[] args) {
         TaskSolver solver = new TaskSolver();
         Scanner scanner = new Scanner(System.in);
@@ -68,38 +164,46 @@ public class TaskSolver {
         int input5b = scanner.nextInt();
         int result5 = solver.lastNumSum(input5a, input5b);
         System.out.println("Сумма цифр из разряда единиц чисел " + input5a + " и " + input5b + ": " + result5);
+        // Тестирование метода sequentialSum
+        solver.sequentialSum();
 
-        // Последовательное сложение пяти чисел
-        System.out.print("Введите первое число для последовательного сложения: ");
-        int input6a = scanner.nextInt();
-        System.out.print("Введите второе число для последовательного сложения: ");
-        int input6b = scanner.nextInt();
-        System.out.print("Введите третье число для последовательного сложения: ");
-        int input6c = scanner.nextInt();
-        System.out.print("Введите четвертое число для последовательного сложения: ");
-        int input6d = scanner.nextInt();
-        System.out.print("Введите пятое число для последовательного сложения: ");
-        int input6e = scanner.nextInt();
+        // Тестирование метода safeDiv
+        System.out.print("Введите первое число для безопасного деления: ");
+        int input7a = scanner.nextInt();
+        System.out.print("Введите второе число для безопасного деления: ");
+        int input7b = scanner.nextInt();
+        double result7 = solver.safeDiv(input7a, input7b);
+        System.out.println("Результат безопасного деления " + input7a + " на " + input7b + ": " + result7);
 
-        int sum = solver.lastNumSum(input6a, input6b);
-        System.out.println(input6a + " + " + input6b + " = " + sum);
+        // Тестирование метода makeDecision
+        System.out.print("Введите первое число для сравнения: ");
+        int input8a = scanner.nextInt();
+        System.out.print("Введите второе число для сравнения: ");
+        int input8b = scanner.nextInt();
+        String result8 = solver.makeDecision(input8a, input8b);
+        System.out.println("Результат сравнения: " + result8);
 
-        sum = solver.lastNumSum(sum, input6c);
-        System.out.println(sum + " + " + input6c + " = " + sum);
+        // Тестирование метода sum3
+        System.out.print("Введите первое число для проверки тройной суммы: ");
+        int input9a = scanner.nextInt();
+        System.out.print("Введите второе число для проверки тройной суммы: ");
+        int input9b = scanner.nextInt();
+        System.out.print("Введите третье число для проверки тройной суммы: ");
+        int input9c = scanner.nextInt();
+        boolean result9 = solver.sum3(input9a, input9b, input9c);
+        System.out.println("Можно ли сложить два числа из трех, чтобы получить третье: " + result9);
 
-        sum = solver.lastNumSum(sum, input6d);
-        System.out.println(sum + " + " + input6d + " = " + sum);
+        // Тестирование метода age
+        System.out.print("Введите возраст: ");
+        int input10 = scanner.nextInt();
+        String result10 = solver.age(input10);
+        System.out.println("Возраст: " + result10);
 
-        sum = solver.lastNumSum(sum, input6e);
-        System.out.println(sum + " + " + input6e + " = " + sum);
-
-        System.out.println("Итого: " + sum);
+        // Тестирование метода printDays
+        System.out.print("Введите день недели: ");
+        String input11 = scanner.next();
+        solver.printDays(input11);
 
         scanner.close();
     }
 }
-
-
-
-
-
