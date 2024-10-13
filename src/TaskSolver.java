@@ -127,6 +127,128 @@ public class TaskSolver {
         System.out.println("Итого: " + sum);
     }
 
+    // Метод для возврата строки с числами от x до 0
+    public String reverseListNums(int x) {
+        StringBuilder result = new StringBuilder();
+        for (int i = x; i >= 0; i--) {
+            result.append(i).append(" ");
+        }
+        return result.toString().trim();
+    }
+
+    // Метод для возведения числа x в степень y
+    public int pow(int x, int y) {
+        int result = 1;
+        for (int i = 0; i < y; i++) {
+            result *= x;
+        }
+        return result;
+    }
+
+    // Метод для проверки одинаковости всех знаков числа
+    public boolean equalNum(int x) {
+        int lastDigit = x % 10;
+        x /= 10;
+        while (x > 0) {
+            if (x % 10 != lastDigit) {
+                return false;
+            }
+            x /= 10;
+        }
+        return true;
+    }
+
+    // Метод для вывода левого треугольника
+    public void leftTriangle(int x) {
+        for (int i = 1; i <= x; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+    // Метод для игры "Угадайка"
+    public void guessGame() {
+        Scanner scanner = new Scanner(System.in);
+        int randomNumber = (int) (Math.random() * 10);
+        int attempts = 0;
+        int guess;
+
+        do {
+            System.out.print("Угадайте число от 0 до 9: ");
+            guess = scanner.nextInt();
+            attempts++;
+            if (guess == randomNumber) {
+                System.out.println("Вы угадали число! Количество попыток: " + attempts);
+            } else {
+                System.out.println("Не угадали, попробуйте еще раз.");
+            }
+        } while (guess != randomNumber);
+    }
+
+    // Метод для поиска последнего вхождения числа в массив
+    public int findLast(int[] arr, int x) {
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == x) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Метод для добавления элемента в массив на определенную позицию
+    public int[] add(int[] arr, int x, int pos) {
+        int[] newArr = new int[arr.length + 1];
+        for (int i = 0; i < pos; i++) {
+            newArr[i] = arr[i];
+        }
+        newArr[pos] = x;
+        for (int i = pos; i < arr.length; i++) {
+            newArr[i + 1] = arr[i];
+        }
+        return newArr;
+    }
+
+    // Метод для реверса массива
+    public void reverse(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+        while (left < right) {
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+    }
+
+    // Метод для объединения двух массивов
+    public int[] concat(int[] arr1, int[] arr2) {
+        int[] newArr = new int[arr1.length + arr2.length];
+        System.arraycopy(arr1, 0, newArr, 0, arr1.length);
+        System.arraycopy(arr2, 0, newArr, arr1.length, arr2.length);
+        return newArr;
+    }
+
+    // Метод для удаления отрицательных элементов из массива
+    public int[] deleteNegative(int[] arr) {
+        int count = 0;
+        for (int num : arr) {
+            if (num >= 0) {
+                count++;
+            }
+        }
+        int[] newArr = new int[count];
+        int index = 0;
+        for (int num : arr) {
+            if (num >= 0) {
+                newArr[index++] = num;
+            }
+        }
+        return newArr;
+    }
+
     public static void main(String[] args) {
         TaskSolver solver = new TaskSolver();
         Scanner scanner = new Scanner(System.in);
@@ -164,6 +286,7 @@ public class TaskSolver {
         int input5b = scanner.nextInt();
         int result5 = solver.lastNumSum(input5a, input5b);
         System.out.println("Сумма цифр из разряда единиц чисел " + input5a + " и " + input5b + ": " + result5);
+
         // Тестирование метода sequentialSum
         solver.sequentialSum();
 
@@ -203,6 +326,90 @@ public class TaskSolver {
         System.out.print("Введите день недели: ");
         String input11 = scanner.next();
         solver.printDays(input11);
+
+        // Тестирование метода reverseListNums
+        System.out.print("Введите число для вывода чисел от него до 0: ");
+        int input12 = scanner.nextInt();
+        String result12 = solver.reverseListNums(input12);
+        System.out.println("Числа от " + input12 + " до 0: " + result12);
+
+        // Тестирование метода pow
+        System.out.print("Введите число для возведения в степень: ");
+        int input13a = scanner.nextInt();
+        System.out.print("Введите степень: ");
+        int input13b = scanner.nextInt();
+        int result13 = solver.pow(input13a, input13b);
+        System.out.println(input13a + " в степени " + input13b + " = " + result13);
+
+        // Тестирование метода equalNum
+        System.out.print("Введите число для проверки одинаковости знаков: ");
+        int input14 = scanner.nextInt();
+        boolean result14 = solver.equalNum(input14);
+        System.out.println("Все знаки числа " + input14 + " одинаковы: " + result14);
+
+        // Тестирование метода leftTriangle
+        System.out.print("Введите высоту треугольника: ");
+        int input15 = scanner.nextInt();
+        solver.leftTriangle(input15);
+
+        // Тестирование метода guessGame
+        solver.guessGame();
+
+        // Тестирование метода findLast
+        System.out.print("Введите размер массива: ");
+        int size = scanner.nextInt();
+        int[] array = new int[size];
+        System.out.println("Введите элементы массива:");
+        for (int i = 0; i < size; i++) {
+            array[i] = scanner.nextInt();
+        }
+        System.out.print("Введите число для поиска последнего вхождения: ");
+        int input16 = scanner.nextInt();
+        int result16 = solver.findLast(array, input16);
+        System.out.println("Индекс последнего вхождения числа " + input16 + ": " + result16);
+
+        // Тестирование метода add
+        System.out.print("Введите число для добавления в массив: ");
+        int input17a = scanner.nextInt();
+        System.out.print("Введите позицию для добавления: ");
+        int input17b = scanner.nextInt();
+        int[] result17 = solver.add(array, input17a, input17b);
+        System.out.println("Новый массив после добавления: ");
+        for (int num : result17) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        // Тестирование метода reverse
+        solver.reverse(array);
+        System.out.println("Массив после реверса: ");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        // Тестирование метода concat
+        System.out.print("Введите размер второго массива: ");
+        int size2 = scanner.nextInt();
+        int[] array2 = new int[size2];
+        System.out.println("Введите элементы второго массива:");
+        for (int i = 0; i < size2; i++) {
+            array2[i] = scanner.nextInt();
+        }
+        int[] result18 = solver.concat(array, array2);
+        System.out.println("Объединенный массив: ");
+        for (int num : result18) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        // Тестирование метода deleteNegative
+        int[] result19 = solver.deleteNegative(array);
+        System.out.println("Массив после удаления отрицательных элементов: ");
+        for (int num : result19) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
 
         scanner.close();
     }
