@@ -30,6 +30,35 @@ public class TaskSolver {
         int lastDigitB = b % 10;
         return lastDigitA + lastDigitB;
     }
+    // Метод для последовательного сложения пяти чисел
+    public void sequentialSum() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите первое число для последовательного сложения: ");
+        int input6a = scanner.nextInt();
+        System.out.print("Введите второе число для последовательного сложения: ");
+        int input6b = scanner.nextInt();
+        System.out.print("Введите третье число для последовательного сложения: ");
+        int input6c = scanner.nextInt();
+        System.out.print("Введите четвертое число для последовательного сложения: ");
+        int input6d = scanner.nextInt();
+        System.out.print("Введите пятое число для последовательного сложения: ");
+        int input6e = scanner.nextInt();
+
+        int sum = lastNumSum(input6a, input6b);
+        System.out.println(input6a + " + " + input6b + " = " + sum);
+
+        sum = lastNumSum(sum, input6c);
+        System.out.println(sum + " + " + input6c + " = " + sum);
+
+        sum = lastNumSum(sum, input6d);
+        System.out.println(sum + " + " + input6d + " = " + sum);
+
+        sum = lastNumSum(sum, input6e);
+        System.out.println(sum + " + " + input6e + " = " + sum);
+
+        System.out.println("Итого: " + sum);
+    }
 
     // Метод для безопасного деления
     public double safeDiv(int x, int y) {
@@ -97,35 +126,6 @@ public class TaskSolver {
         }
     }
 
-    // Метод для последовательного сложения пяти чисел
-    public void sequentialSum() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Введите первое число для последовательного сложения: ");
-        int input6a = scanner.nextInt();
-        System.out.print("Введите второе число для последовательного сложения: ");
-        int input6b = scanner.nextInt();
-        System.out.print("Введите третье число для последовательного сложения: ");
-        int input6c = scanner.nextInt();
-        System.out.print("Введите четвертое число для последовательного сложения: ");
-        int input6d = scanner.nextInt();
-        System.out.print("Введите пятое число для последовательного сложения: ");
-        int input6e = scanner.nextInt();
-
-        int sum = lastNumSum(input6a, input6b);
-        System.out.println(input6a + " + " + input6b + " = " + sum);
-
-        sum = lastNumSum(sum, input6c);
-        System.out.println(sum + " + " + input6c + " = " + sum);
-
-        sum = lastNumSum(sum, input6d);
-        System.out.println(sum + " + " + input6d + " = " + sum);
-
-        sum = lastNumSum(sum, input6e);
-        System.out.println(sum + " + " + input6e + " = " + sum);
-
-        System.out.println("Итого: " + sum);
-    }
 
     // Метод для возврата строки с числами от x до 0
     public String reverseListNums(int x) {
