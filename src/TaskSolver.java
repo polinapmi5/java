@@ -356,24 +356,31 @@ public class TaskSolver {
         solver.guessGame();
 
         // Тестирование метода findLast
-        System.out.print("Введите размер массива: ");
-        int size = scanner.nextInt();
-        int[] array = new int[size];
+        System.out.print("Введите размер массива для поиска последнего вхождения: ");
+        int size1 = scanner.nextInt();
+        int[] array1 = new int[size1];
         System.out.println("Введите элементы массива:");
-        for (int i = 0; i < size; i++) {
-            array[i] = scanner.nextInt();
+        for (int i = 0; i < size1; i++) {
+            array1[i] = scanner.nextInt();
         }
         System.out.print("Введите число для поиска последнего вхождения: ");
         int input16 = scanner.nextInt();
-        int result16 = solver.findLast(array, input16);
+        int result16 = solver.findLast(array1, input16);
         System.out.println("Индекс последнего вхождения числа " + input16 + ": " + result16);
 
         // Тестирование метода add
+        System.out.print("Введите размер массива для добавления элемента: ");
+        int size2 = scanner.nextInt();
+        int[] array2 = new int[size2];
+        System.out.println("Введите элементы массива:");
+        for (int i = 0; i < size2; i++) {
+            array2[i] = scanner.nextInt();
+        }
         System.out.print("Введите число для добавления в массив: ");
         int input17a = scanner.nextInt();
         System.out.print("Введите позицию для добавления: ");
         int input17b = scanner.nextInt();
-        int[] result17 = solver.add(array, input17a, input17b);
+        int[] result17 = solver.add(array2, input17a, input17b);
         System.out.println("Новый массив после добавления: ");
         for (int num : result17) {
             System.out.print(num + " ");
@@ -381,22 +388,36 @@ public class TaskSolver {
         System.out.println();
 
         // Тестирование метода reverse
-        solver.reverse(array);
+        System.out.print("Введите размер массива для реверса: ");
+        int size3 = scanner.nextInt();
+        int[] array3 = new int[size3];
+        System.out.println("Введите элементы массива:");
+        for (int i = 0; i < size3; i++) {
+            array3[i] = scanner.nextInt();
+        }
+        solver.reverse(array3);
         System.out.println("Массив после реверса: ");
-        for (int num : array) {
+        for (int num : array3) {
             System.out.print(num + " ");
         }
         System.out.println();
 
         // Тестирование метода concat
-        System.out.print("Введите размер второго массива: ");
-        int size2 = scanner.nextInt();
-        int[] array2 = new int[size2];
-        System.out.println("Введите элементы второго массива:");
-        for (int i = 0; i < size2; i++) {
-            array2[i] = scanner.nextInt();
+        System.out.print("Введите размер первого массива для объединения: ");
+        int size4 = scanner.nextInt();
+        int[] array4 = new int[size4];
+        System.out.println("Введите элементы первого массива:");
+        for (int i = 0; i < size4; i++) {
+            array4[i] = scanner.nextInt();
         }
-        int[] result18 = solver.concat(array, array2);
+        System.out.print("Введите размер второго массива для объединения: ");
+        int size5 = scanner.nextInt();
+        int[] array5 = new int[size5];
+        System.out.println("Введите элементы второго массива:");
+        for (int i = 0; i < size5; i++) {
+            array5[i] = scanner.nextInt();
+        }
+        int[] result18 = solver.concat(array4, array5);
         System.out.println("Объединенный массив: ");
         for (int num : result18) {
             System.out.print(num + " ");
@@ -404,7 +425,14 @@ public class TaskSolver {
         System.out.println();
 
         // Тестирование метода deleteNegative
-        int[] result19 = solver.deleteNegative(array);
+        System.out.print("Введите размер массива для удаления отрицательных элементов: ");
+        int size6 = scanner.nextInt();
+        int[] array6 = new int[size6];
+        System.out.println("Введите элементы массива:");
+        for (int i = 0; i < size6; i++) {
+            array6[i] = scanner.nextInt();
+        }
+        int[] result19 = solver.deleteNegative(array6);
         System.out.println("Массив после удаления отрицательных элементов: ");
         for (int num : result19) {
             System.out.print(num + " ");
